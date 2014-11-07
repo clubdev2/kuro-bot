@@ -12,7 +12,7 @@
 
 module.exports = (robot) ->
 
-  robot.respond /lgtm/i, (msg) ->
+  robot.hear /lgtm/i, (msg) ->
     msg.http("http://www.lgtm.in/g")
       .header('Accept', 'application/json')
       .get() (err, res, body) ->
