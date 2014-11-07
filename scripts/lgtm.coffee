@@ -18,7 +18,7 @@ module.exports = (robot) ->
       .get() (err, res, body) ->
         url = JSON.parse(body).actualImageUrl
 
-        // 画像サービス毎にがんばって！
+        # 画像サービス毎にがんばって！
         url = url.replace(/\.(jpe?g|gif|png)$/, "m.$1") if url.match(/^http:\/\/i.imgur.com/)
 
         msg.send url
