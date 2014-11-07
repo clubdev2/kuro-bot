@@ -16,5 +16,10 @@ module.exports = (robot) ->
     msg.http("http://www.lgtm.in/g")
       .header('Accept', 'application/json')
       .get() (err, res, body) ->
-        msg.send JSON.parse(body).imageUrl
+        url = JSON.parse(body).actualImageUrl
+
+        // 画像サービス毎にがんばって！
+        url = url.replace(/\.(jpe?g|gif|png)$/, "m.$1") if url.match(/^http:\/\/i.imgur.com/)
+
+        msg.send url
 
